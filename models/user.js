@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
+
 const Schema = mongoose.Schema;
 
-const UserSchema = Schema({
-    username: {type: String, required: true, maxLength: 20},
-    password: {type: String, required: true, maxLength: 100},
-    email: {type: String, required: true, maxLength: 100}
+const UserSchema = new Schema({
+    username: {type: String, maxLength: 30},
+    email: {type: String},
 });
 
 // add virtuals

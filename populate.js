@@ -1,5 +1,6 @@
 const userArgs = process.argv.slice(2);
-const Test = require("./models/testing");
+const user = require("./models/user");
+const User = require("./models/user");
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
   
@@ -21,18 +22,13 @@ async function main() {
 
 
 async function pop() {
-    const test1 = new Test({
-        name: "Joe", monkey: "Howler", num: 42,
+    const user = new User({
+        username: "Krenkoth",
+        email: "john.g.skelton21@gmail.com",
     });
-    const test2 = new Test({
-        name: "Monkey", monkey:"Ape", num: 3,
-    });
-    await Promise.all([
-        test1.save(),
-        test2.save(),
-    ]);
+    await user.save();
     
-    console.log("populated Joe and Monkey");
-    const tests = await Test.find().sort({name: 1}).exec();
+    console.log("populated User");
+    const tests = await User.find().exec();
     console.log(tests);
 }
